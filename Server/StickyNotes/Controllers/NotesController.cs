@@ -61,9 +61,9 @@ namespace StickyNotes.Controllers
         {
             try
             {
-                string sql = "INSERT INTO Notes (Title, Description, CreationDate, IsDelete) VALUES (@Title, @Description, @CreationDate, @IsDelete)";
+                string sql = "INSERT INTO Notes (Id, Title, Description, CreationDate, IsDelete) VALUES (@Id, @Title, @Description, @CreationDate, @IsDelete)";
                 using var db = new SqlConnection(_connection.SqlServerConnection);
-                await db.ExecuteAsync(sql, note);
+                var res = await db.ExecuteAsync(sql, note);
                 return Ok();
             }
             catch (Exception)
@@ -89,12 +89,12 @@ namespace StickyNotes.Controllers
         }
 
         [HttpPut("{id:Guid}")]
-        public async Task<IActionResult> Put(Guid? id, UpdateNoteDto note)
+        public async Task<IActionResult> Update(Guid? id, UpdateNoteDto note)
         {
             try
             {
                 note.Id = id;
-                string sql = "UPDATE Notes SET Title=@Title, Description=@Description WHERE Id = @Id";
+                string sql = "UPDATE Notes SET Title=@Title, Description=@Description, LastModifyDate=@LastModifyDate WHERE Id = @Id";
                 using var db = new SqlConnection(_connection.SqlServerConnection);
                 await db.ExecuteAsync(sql, note);
                 return Ok();
