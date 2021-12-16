@@ -25,14 +25,35 @@ namespace StickyNotes.Controllers
             string sql = "SELECT * FROM Notes";
             try
             {
-                Stopwatch stopwatch = Stopwatch.StartNew();
                 var notes = new List<Note>();
                 using (var db = new SqlConnection(_connection.SqlServerConnection))
                 {
                     notes = db.Query<Note>(sql).ToList();
                 }
-                stopwatch.Stop();
-                return Ok($"{stopwatch.ElapsedMilliseconds}ms");
+                return Ok(notes);
+            }
+            catch (Exception)
+            {
+                return Ok("Error");
+            }
+        }
+
+        [HttpGet("{id:Guid}")]
+        public IActionResult Get(Guid id)
+        {
+            string sql = "SELECT * FROM dbo.Notes WHERE Id = @Id";
+            try
+            {
+                Note note;
+                using (var db = new SqlConnection(_connection.SqlServerConnection))
+                {
+                    var param = new { Id = id };
+                    note = db.QueryFirstOrDefault<Note>(sql,param);
+                }
+                if(note is null)
+                    return NotFound();
+                else
+                    return Ok(note);
             }
             catch (Exception)
             {
@@ -43,16 +64,15 @@ namespace StickyNotes.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(Note note)
         {
-            string sql = "INSERT INTO Notes (Title, Description, CreationDate) VALUES (@Title, @Description, @CreationDate)";
             try
             {
-                Stopwatch stopwatch = Stopwatch.StartNew();
+                string sql = "INSERT INTO Notes (Title, Description, CreationDate, IsDelete) VALUES (@Title, @Description, @CreationDate, @IsDelete)";
                 using (var db = new SqlConnection(_connection.SqlServerConnection))
                 {
+                    note.CreationDate = DateTime.Now;
                     await db.ExecuteAsync(sql, note);
                 }
-                stopwatch.Stop();
-                return Ok($"Success - {stopwatch.ElapsedMilliseconds}ms");
+                return Ok($"Success");
             }
             catch (Exception)
             {

@@ -7,15 +7,7 @@ namespace StickyNotes.Models
     {
         public Note()
         {
-            if(Id is null)
-            {
-                IsDelete = true;
-                CreationDate = DateTime.Now;
-            }
-            else if (Id is not null)
-            {
-                LastModifyDate = DateTime.Now;
-            }
+            IsDelete = true;
         }
 
         public Guid? Id { get; set; }
@@ -29,6 +21,6 @@ namespace StickyNotes.Models
         public DateTime? LastModifyDate { get; set; }
 
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public bool IsDelete { get; set; }
+        public bool IsDelete { get; set; } = true;
     }
 }
