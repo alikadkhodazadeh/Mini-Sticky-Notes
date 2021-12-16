@@ -1,10 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using StickyNotes.Models;
 using Dapper;
 using System.Data.SqlClient;
-using System.Diagnostics;
 using StickyNotes.Helper;
+using StickyNotes.DTOs;
 
 namespace StickyNotes.Controllers
 {
@@ -22,61 +21,87 @@ namespace StickyNotes.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            string sql = "SELECT * FROM Notes";
+            string sql = "SELECT * FROM Notes WHERE IsDelete = 'True'";
             try
             {
                 var notes = new List<Note>();
-                using (var db = new SqlConnection(_connection.SqlServerConnection))
-                {
-                    notes = db.Query<Note>(sql).ToList();
-                }
+                using var db = new SqlConnection(_connection.SqlServerConnection);
+                notes = db.Query<Note>(sql).ToList();
                 return Ok(notes);
             }
             catch (Exception)
             {
-                return Ok("Error");
+                return BadRequest();
             }
         }
 
         [HttpGet("{id:Guid}")]
-        public IActionResult Get(Guid id)
+        public IActionResult Get(Guid? id)
         {
             string sql = "SELECT * FROM dbo.Notes WHERE Id = @Id";
             try
             {
                 Note note;
-                using (var db = new SqlConnection(_connection.SqlServerConnection))
-                {
-                    var param = new { Id = id };
-                    note = db.QueryFirstOrDefault<Note>(sql,param);
-                }
-                if(note is null)
+                using var db = new SqlConnection(_connection.SqlServerConnection);
+                var param = new { Id = id };
+                note = db.QueryFirstOrDefault<Note>(sql, param);
+                if (note is null)
                     return NotFound();
                 else
                     return Ok(note);
             }
             catch (Exception)
             {
-                return Ok("Error");
+                return BadRequest();
             }
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(Note note)
+        public async Task<IActionResult> Create(CreateNoteDto note)
         {
             try
             {
                 string sql = "INSERT INTO Notes (Title, Description, CreationDate, IsDelete) VALUES (@Title, @Description, @CreationDate, @IsDelete)";
-                using (var db = new SqlConnection(_connection.SqlServerConnection))
-                {
-                    note.CreationDate = DateTime.Now;
-                    await db.ExecuteAsync(sql, note);
-                }
-                return Ok($"Success");
+                using var db = new SqlConnection(_connection.SqlServerConnection);
+                await db.ExecuteAsync(sql, note);
+                return Ok();
             }
             catch (Exception)
             {
-                return Ok("Error");
+                return BadRequest();
+            }
+        }
+
+        [HttpDelete("{id:Guid}")]
+        public async Task<IActionResult> Delete(Guid? id)
+        {
+            string sql = "UPDATE Notes SET IsDelete = 'False' WHERE Id = @Id";
+            try
+            {
+                using var db = new SqlConnection(_connection.SqlServerConnection);
+                await db.ExecuteAsync(sql,new { Id = id });
+                return Ok();
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+
+        [HttpPut("{id:Guid}")]
+        public async Task<IActionResult> Put(Guid? id, UpdateNoteDto note)
+        {
+            try
+            {
+                note.Id = id;
+                string sql = "UPDATE Notes SET Title=@Title, Description=@Description WHERE Id = @Id";
+                using var db = new SqlConnection(_connection.SqlServerConnection);
+                await db.ExecuteAsync(sql, note);
+                return Ok();
+            }
+            catch (Exception)
+            {
+                return BadRequest();
             }
         }
     }

@@ -1,4 +1,6 @@
-using StickyNotes.Helper;
+﻿using StickyNotes.Helper;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
