@@ -1,9 +1,13 @@
+const toastr = require('toastr')
+toastr.options.rtl = true;
+
 export function getNotes() {
     return fetch('https://localhost:7212/Api/Notes')
         .then(res => {
             return res.json()
         })
         .catch(err => {
+            toastr.error('اطلاعات از سمت سرور دریافت نشد','خطا')
             console.log(err);
         })
 }
@@ -17,6 +21,9 @@ export function createNote(obj) {
             'Content-Type': 'application/json'
         }
     })
+    .catch(err=>{
+        toastr.error('آیتمی ایجاد نشد','خطا')
+    })
 }
 
 export function updateNote(obj){
@@ -27,6 +34,9 @@ export function updateNote(obj){
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         }
+    })
+    .catch(err=>{
+        toastr.error('خطا','آیتم مورد نظر بروزرسانی نشد.')
     })
 }
 

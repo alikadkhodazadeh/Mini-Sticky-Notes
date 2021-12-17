@@ -17,13 +17,31 @@ body {
 
 #container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, 200px);
+    grid-template-columns: repeat(auto-fill, 230px);
     padding: 1.5rem;
     gap: 1.5rem;
 }
-
+.note-wrap{
+    position: relative;
+    background-color: #aaa;
+    border-top: 8px solid #fcc404;
+    border-radius: 10px;
+    height: 230px;
+    overflow: hidden;
+}
+.title{
+    position: absolute;
+    z-index: 1;
+    padding: 0.7rem 1rem;
+    font-size: large;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-family: 'Vazir-FD';
+    font-weight: bold;
+}
 .note {
-    height: 200px;
+    transform: translateY(30px);
     box-sizing: border-box;
     padding: 1rem;
     color: #212121;
@@ -31,12 +49,25 @@ body {
     border-radius: 10px;
     resize: none;
     font: inherit;
-    font-size: 1rem;
+    font-size: 0.9rem;
     outline: none;
+    background-color: #aaa;
+}
+.close-btn{
+    position: absolute;
+    left: 0;
+    margin: 0.5rem 1rem;
+    cursor: pointer !important;
+    z-index: 2;
+    transition: 0.1s all;
+}
+
+.close-btn:hover{
+    font-size: larger;
 }
 
 .add-note {
-    height: 200px;
+    height: 230px;
     border: none;
     outline: none;
     background-color: #616161;
