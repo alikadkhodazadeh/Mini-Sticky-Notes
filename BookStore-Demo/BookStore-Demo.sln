@@ -9,6 +9,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookStore.Domain", "BookSto
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookStore.Infrastructure", "BookStore.Infrastructure\BookStore.Infrastructure.csproj", "{8F92E850-A6CA-4FEC-BCAF-28A7EEDC73CE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookStore.Application", "BookStore.Application\BookStore.Application.csproj", "{96476877-46CE-4348-9348-55788896829E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookStore.Framework", "BookStore.Framework\BookStore.Framework.csproj", "{B8066067-1ED5-4034-A832-3B902FB028CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookStore.Web", "BookStore.Web\BookStore.Web.csproj", "{F990CF2A-C300-40E0-AF3D-9847D2A42949}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +33,18 @@ Global
 		{8F92E850-A6CA-4FEC-BCAF-28A7EEDC73CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8F92E850-A6CA-4FEC-BCAF-28A7EEDC73CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8F92E850-A6CA-4FEC-BCAF-28A7EEDC73CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96476877-46CE-4348-9348-55788896829E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96476877-46CE-4348-9348-55788896829E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96476877-46CE-4348-9348-55788896829E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96476877-46CE-4348-9348-55788896829E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8066067-1ED5-4034-A832-3B902FB028CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8066067-1ED5-4034-A832-3B902FB028CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8066067-1ED5-4034-A832-3B902FB028CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8066067-1ED5-4034-A832-3B902FB028CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F990CF2A-C300-40E0-AF3D-9847D2A42949}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F990CF2A-C300-40E0-AF3D-9847D2A42949}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F990CF2A-C300-40E0-AF3D-9847D2A42949}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F990CF2A-C300-40E0-AF3D-9847D2A42949}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

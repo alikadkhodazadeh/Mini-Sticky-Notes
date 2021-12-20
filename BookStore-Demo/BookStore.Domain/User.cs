@@ -1,6 +1,6 @@
 ﻿namespace BookStore.Domain
 {
-    public class User : IdentityUser<Guid>, IBaseEntity
+    public class User : IdentityUser, IBaseEntity
     {
         public User()
         {

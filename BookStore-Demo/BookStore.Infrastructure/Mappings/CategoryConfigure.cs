@@ -6,6 +6,11 @@
         {
             builder
                 .HasKey(p => p.Id);
+
+            builder
+                .HasOne(p => p.ParentCategory)
+                .WithMany(t => t.ChildCategories)
+                .HasForeignKey(p => p.ParentCategoryId);
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace BookStore.Domain
 {
-    public class Role : IdentityRole<int>, IBaseEntity
+    public class Role : IdentityRole, IBaseEntity
     {
         public string? Description { get; set; }
     }
