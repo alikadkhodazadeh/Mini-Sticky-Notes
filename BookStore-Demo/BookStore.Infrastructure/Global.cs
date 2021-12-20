@@ -4,3 +4,4 @@ global using Microsoft.EntityFrameworkCore;
 global using Microsoft.EntityFrameworkCore.Metadata.Builders;
 global using BookStore.Common;
 global using BookStore.Domain.Common;
+global using BookStore.Infrastructure.Contracts;
