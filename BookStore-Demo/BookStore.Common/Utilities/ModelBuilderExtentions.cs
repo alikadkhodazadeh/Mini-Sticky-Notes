@@ -1,9 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
-using Pluralize.NET;
-using System.Reflection;
-
-namespace BookStore.Common
+﻿namespace BookStore.Common
 {
     public static class ModelBuilderExtentions
     {
