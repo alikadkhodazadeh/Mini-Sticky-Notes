@@ -13,6 +13,8 @@ services.AddDbContext<EFContext>(options =>
 {
     options.UseSqlServer(AppSettingExtentions.DatabaseConnection);
 });
+
+services.AddApplicationLayer();
 #endregion
 
 #region Middleware

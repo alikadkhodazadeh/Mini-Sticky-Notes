@@ -1,8 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
-
-namespace BookStore.Application.TagApp
+﻿namespace BookStore.Application.TagApp
 {
-    public class TagService
+    public class TagService : ITagService
     {
         private readonly IRepository<Tag> _repository;
 

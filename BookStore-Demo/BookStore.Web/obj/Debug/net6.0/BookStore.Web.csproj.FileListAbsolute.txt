@@ -69,3 +69,5 @@ E:\workspace\Mini-Sticky-Notes\BookStore-Demo\BookStore.Web\obj\Debug\net6.0\Boo
 E:\workspace\Mini-Sticky-Notes\BookStore-Demo\BookStore.Web\obj\Debug\net6.0\ref\BookStore.Web.dll
 E:\workspace\Mini-Sticky-Notes\BookStore-Demo\BookStore.Web\obj\Debug\net6.0\BookStore.Web.pdb
 E:\workspace\Mini-Sticky-Notes\BookStore-Demo\BookStore.Web\obj\Debug\net6.0\BookStore.Web.genruntimeconfig.cache
+E:\workspace\Mini-Sticky-Notes\BookStore-Demo\BookStore.Web\bin\Debug\net6.0\Mapster.dll
+E:\workspace\Mini-Sticky-Notes\BookStore-Demo\BookStore.Web\bin\Debug\net6.0\Mapster.Core.dll
