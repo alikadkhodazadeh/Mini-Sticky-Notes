@@ -1,6 +1,6 @@
 ﻿namespace BookStore.Domain
 {
-    public class Category : BaseEntity
+    public class Category : BaseEntity, IEntityTypeConfiguration<Category>
     {
         public string? Title { get; set; }
         public string? Description { get; set; }
@@ -10,5 +10,11 @@
         public Category? ParentCategory { get; set; }
         public virtual ICollection<Category>? ChildCategories { get; set; }
         public virtual ICollection<Book>? Books { get; set; }
+
+        public void Configure(EntityTypeBuilder<Category> builder)
+        {
+            builder
+                .HasKey(p => p.Id);
+        }
     }
 }

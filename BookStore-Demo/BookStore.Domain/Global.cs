@@ -6,3 +6,5 @@ global using System.ComponentModel.DataAnnotations.Schema;
 global using BookStore.Domain.Common;
 global using Microsoft.AspNetCore.Identity;
 global using BookStore.Domain.Enums;
+global using Microsoft.EntityFrameworkCore;
+global using Microsoft.EntityFrameworkCore.Metadata.Builders;

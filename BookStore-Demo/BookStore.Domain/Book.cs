@@ -8,7 +8,10 @@
         public int Price { get; set; }
         public byte? Discount { get; set; }
 
-        public int CategoryId { get; set; }
+        public int? CategoryId { get; set; }
         public Category? Category { get; set; }
+
+        public virtual ICollection<BookAuthor>? BookAuthors { get; set; }
+        public virtual ICollection<BookTag>? BookTags { get; set; }
     }
 }
